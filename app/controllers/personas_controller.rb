@@ -70,7 +70,7 @@ class PersonasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def persona_params
-      params.require(:persona).permit(:role, :goal)
+      params.require(:persona).permit(:role, :goal, :project_id)
     end
 
 end
