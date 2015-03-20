@@ -1,0 +1,19 @@
+<%= form_for(@persona) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <% Persona.questions.each do |q| %>
+    <div class="actions">
+      <%= f.label q %>
+      <% PersonaDescription.where(category: q).each do |pd| %>
+        <%= f.label q.downcase.to_sym, pd.description %>
+        <%= f.radio_button q.downcase.to_sym, pd.description %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
+<% Persona.questions.each do |q| %>
+  Add New <%=q%>
+  <%= render :partial => "shared/persona_description_form", :locals => { :category => q } %>
+<% end %>
+  

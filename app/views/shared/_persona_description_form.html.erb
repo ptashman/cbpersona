@@ -1,0 +1,8 @@
+<%= form_for(@persona_description) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.hidden_field :category, value: category %>
+    <%= f.text_area :description %>
+  </div>
+  <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+<% end %>

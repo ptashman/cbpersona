@@ -1,4 +1,10 @@
-SampleApp::Application.routes.draw do
+Cbpersona::Application.routes.draw do
+  resources :projects
+
+  resources :persona_descriptions
+
+  resources :personas
+
   resources :users do
     member do
       get :following, :followers
