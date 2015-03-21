@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
-  has_many :personas
+  has_many :usages
+  has_many :personas, through: :usages
 
   def persona_trends
     hash = {}

@@ -11,8 +11,8 @@
       <% end %>
     </div>
   <% end %>
-  <%= f.hidden_field :project_id, value: params[:project_id] %>
-  <%= f.submit %>
+  <%#= f.hidden_field :project_id, value: params[:project_id] %>
+  <%= f.button :submit , name: "project_id", value: params[:project_id] %>
 <% end %>
 
 <% Persona.questions.each do |q| %>

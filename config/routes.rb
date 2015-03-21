@@ -1,5 +1,11 @@
 Cbpersona::Application.routes.draw do
-  resources :projects
+  resources :usages
+
+  resources :projects do
+    member do
+      get :add_persona
+    end
+  end
 
   resources :persona_descriptions
 

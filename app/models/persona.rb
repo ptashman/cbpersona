@@ -1,6 +1,6 @@
 class Persona < ActiveRecord::Base
-  belongs_to :project
-  validates_presence_of :project_id
+  has_many :usages
+  has_many :projects, through: :usages
   
   def self.questions
     ["Role", "Goal"]

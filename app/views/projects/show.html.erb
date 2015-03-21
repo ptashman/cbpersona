@@ -1,19 +1,30 @@
 <p id="notice"><%= notice %></p>
-
+<% unless @project.personas.empty? %>
 <tr>
 <% @project.persona_trends.each do |k,v| %>
-  <td><%= "Personas who use this project tend to have a #{k} of #{v}." %></td>
+  <td><%= "Personas who use this project tend to have a #{k} of #{v}." %></td><p>
 <% end %>
 </tr>
-
+<% end %>
+<p>
 <tr>
-  <td>Personas:</td>
-  <% @project.personas.each do |persona| %>
+  <td>This Project's Personas:</td>
+  <% @project.personas.uniq.each do |persona| %>
     <td><%= persona.title %></td>
+    <td><%= link_to 'Edit', edit_persona_path(persona) %></td><p>
   <% end %>
 </tr>
-
+<p>
 <%= link_to 'Add new persona', new_persona_path(:project_id => @project.id) %>
-
+<p>
+<tr>
+  <td>All Personas:</td>
+  <% Persona.all.uniq.each do |persona| %>
+    <p>
+    <td><%= persona.title %></td>
+    <td><%= link_to 'Add To Project', :controller => "projects", :action => "add_persona", :persona_id => persona.id %></td><p>
+  <% end %>
+</tr>
+<p>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

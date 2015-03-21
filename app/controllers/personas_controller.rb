@@ -20,6 +20,7 @@ class PersonasController < ApplicationController
 
   # GET /personas/1/edit
   def edit
+    @persona_description = PersonaDescription.new
   end
 
   # POST /personas
@@ -29,6 +30,7 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
+        Usage.create(:project_id => params[:project_id].to_i, :persona_id => @persona.id)
         format.html { redirect_to @persona, notice: 'Persona was successfully created.' }
         format.json { render action: 'show', status: :created, location: @persona }
       else
@@ -70,7 +72,7 @@ class PersonasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def persona_params
-      params.require(:persona).permit(:role, :goal, :project_id, :title)
+      params.require(:persona).permit(:role, :goal, :title)
     end
 
 end

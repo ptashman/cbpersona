@@ -61,6 +61,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def add_persona
+    Usage.create(:persona_id => params["persona_id"].to_i, :project_id => params["id"].to_i)
+    redirect_to Project.find(params["id"].to_i)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
