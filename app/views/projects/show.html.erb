@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<%= @project.persona_trends %>
+<tr>
+<% @project.persona_trends.each do |k,v| %>
+  <td><%= "Personas who use this project tend to have a #{k} of #{v}." %>
+<% end %>
+</tr>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
