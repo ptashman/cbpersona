@@ -1,5 +1,7 @@
 <%= form_for(@persona) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label "Title" %>
+  <%= f.text_field :title %>
   <% Persona.questions.each do |q| %>
     <div class="actions">
       <%= f.label q %>
@@ -9,8 +11,7 @@
       <% end %>
     </div>
   <% end %>
-  <%= f.label "Project ID" %>
-  <%= f.text_field :project_id %>
+  <%= f.hidden_field :project_id, value: params[:project_id] %>
   <%= f.submit %>
 <% end %>
 
